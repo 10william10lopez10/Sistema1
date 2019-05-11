@@ -435,7 +435,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO productos(Nombre,Apellido,Cliente,Telefono) VALUES (?,?,?,?)");
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO clientes (Nombre,Apeliido,Cliente,Telefono) VALUES (?,?,?,?)");
                 pps.setString(1, txtNombre.getText());
                 pps.setString(2, txtApellido.getText());
                 pps.setString(3, txtCliente.getText());
