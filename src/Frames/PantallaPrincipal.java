@@ -21,11 +21,49 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     /**
      * Crear nuevo formulario PantallaPrincipal
      */
+    //constructor
     public PantallaPrincipal() {
         initComponents();
         mostrartabla();
+        mostrartabla2();
         
+        //metodo para mostrar tabla de clientes 
     }
+    void mostrartabla2(){
+         DefaultTableModel modelo = new DefaultTableModel();
+         modelo.addColumn("Id");
+         modelo.addColumn("Nombre");
+         modelo.addColumn("Apeliido");
+         modelo.addColumn("Cliente");
+         modelo.addColumn("Telefono");
+         TablaDatos2.setModel(modelo);
+         
+         String sql = "SELECT * FROM clientes";
+         
+         //arreglo para pasar datos desde la base de datos a nuestra tabla clientes
+         
+         String datos[] = new String[5];
+         Statement st;
+         try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                modelo.addRow(datos);
+            }
+            
+            TablaDatos2.setModel(modelo);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+        //metodo para mostrar tabla de productos
         void mostrartabla(){
          DefaultTableModel modelo = new DefaultTableModel();
          modelo.addColumn("Id");
@@ -37,6 +75,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
          TablaDatos.setModel(modelo);
          
          String sql = "SELECT * FROM productos";
+         
+         //arreglo para pasar datos desde la base de datos a nuestra tabla productos 
          
          String datos[] = new String[6];
          Statement st;
@@ -82,6 +122,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -97,6 +139,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDatos = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaDatos2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,10 +156,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(285, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(222, 222, 222)
                 .addComponent(jLabel1)
-                .addGap(169, 169, 169))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,6 +256,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("jButton3");
+
+        jButton4.setText("jButton4");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -220,8 +268,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +283,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton3)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton4)))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
 
@@ -370,15 +425,34 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Catalogo", jPanel5);
 
+        TablaDatos2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(TablaDatos2);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 856, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Tipos de clientes", jPanel8);
@@ -414,7 +488,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //boton de guardar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //este es una condicion que no permite dejar espacios en blanco en el formulario
         if(txtProducto.getText().equals("")|| txtUnidad.getText().equals("")|| txtPreferencial.getText().equals("")||txtDocena.getText().equals("")||txtCentena.getText().equals("")){
             JOptionPane.showConfirmDialog(null, "No puede dejar campos vacios sin llenar");
         }
@@ -487,8 +563,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaDatos;
+    private javax.swing.JTable TablaDatos2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -508,6 +587,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCentena;
