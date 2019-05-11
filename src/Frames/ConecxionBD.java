@@ -10,6 +10,7 @@ public class ConecxionBD {
     String url;
     public ConecxionBD(String url) {
         this.url = url;
+        
     }
    
     
