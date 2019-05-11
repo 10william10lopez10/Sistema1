@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class PantallaPrincipal extends javax.swing.JFrame {
     
-    ConecxionBD con = new ConecxionBD("sistemas");
+    ConecxionBD con = new ConecxionBD("clientes");
     
     Connection cn = con.conexion();
 
