@@ -101,12 +101,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
          
     }
     
-        void limpiar() {
+        void Limpiar() {
         txtProducto.setText("");
         txtUnidad.setText("");
         txtDocena.setText("");
         txtPreferencial.setText("");
         txtCentena.setText("");
+        Buscar.setText("");
         }
         
     @SuppressWarnings("unchecked")
@@ -131,6 +132,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -145,6 +147,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDatos = new javax.swing.JTable();
+        Buscar = new javax.swing.JTextField();
         Actualizar = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -271,6 +274,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -279,10 +289,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +307,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addComponent(jButton1)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton4)))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
 
@@ -394,7 +408,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jButton2)))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clientes", jPanel4);
@@ -428,7 +442,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Actualizar)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(Actualizar)
+                        .addGap(69, 69, 69)
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -436,7 +453,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(Actualizar)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Actualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -549,11 +568,37 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClienteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    limpiar();
+    Limpiar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int fila = TablaDatos.getSelectedRow();
+if(fila>=0){
+    Buscar.setText(TablaDatos.getValueAt(fila, 0).toString());
+    txtNombre.setText(TablaDatos.getValueAt(fila, 1).toString());
+    txtUnidad.setText(TablaDatos.getValueAt(fila, 2).toString());
+    txtPreferencial.setText(TablaDatos.getValueAt(fila, 3).toString());
+    txtDocena.setText(TablaDatos.getValueAt(fila, 4).toString());
+    txtCentena.setText(TablaDatos.getValueAt(fila, 5).toString());
+}
+else{
+    JOptionPane.showMessageDialog(null, "Fila no seleccionada");
     
+}
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+      /*  try {
+            PreparedStatement pps = cn.prepareStatement("UPDATE productos SET Nombre='"+txtNombre.getText()+"',PrecioUnidad='"+txtUnidad.getText()+"',PrecioPreferencial='"+txtPreferencial.getText()+"',PrecioDocena='"+txtDocena.getText()+"'PrecioCentena='"+txtCentena.getText()+"' WHERE idProducto='"+Buscar.getText()+"'");
+            
+            pps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos Actualizados ");
+            Limpiar();
+            mostrartabla();
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }//GEN-LAST:event_ActualizarActionPerformed
 
     public static void main(String args[]) {
@@ -590,11 +635,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
+    private javax.swing.JTextField Buscar;
     private javax.swing.JTable TablaDatos;
     private javax.swing.JTable TablaDatos2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
