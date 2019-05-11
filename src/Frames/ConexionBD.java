@@ -7,7 +7,7 @@ public class ConexionBD {
     Connection cn;
     Statement st;
     
-    public Connection conexion(){
+    public Connection conexion( ){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             cn = DriverManager.getConnection("jdbc:mysql://localhost/sistema","root","123");

@@ -6,6 +6,11 @@ import java.sql.*;
 public class ConecxionBD {
     Connection cn;
     Statement st;
+
+    String url;
+    public ConecxionBD(String url) {
+        this.url = url;
+    }
    
     
     public Connection conexion(){
